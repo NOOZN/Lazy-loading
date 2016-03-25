@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>www.nooz.cn</title>
+<style>
+*{ margin:0; padding:0; list-style:none;}
+img{width:310px;height:310px; border:#666 1px solid;}
+</style>
+<script>
+window.onload=window.onscroll=window.onresize=function(){
+	var aImg=document.getElementsByTagName('img');
+
+		//要加载的条件 img.top<scrollTop+clientHeight
+		var scrTop=document.documentElement.scrollTop||document.body.scrollTop;
+		var clientH=document.documentElement.clientHeight;
+		for(var i=0;i<aImg.length;i++){
+			//求每一张图的到页面顶端的距离
+				
+			var imgTop=getPos(aImg[i]).top;
+			if(imgTop<scrTop+clientH){
+				aImg[i].src=aImg[i].getAttribute('_src');	
+			}
+		}
+		
+};
+
+function getPos(obj){
+	var l=t=0;
+	while(obj){
+		l+=obj.offsetLeft;
+		t+=obj.offsetTop;
+		obj=obj.offsetParent;	
+	}
+	return {left:l,top:t}
+}
+	
+	
+</script>
+</head>
+
+<body>
+
+<img _src="img/m1.jpg">
+<img _src="img/m2.jpg">
+<img _src="img/m3.jpg">
+<img _src="img/m4.jpg">
+<img _src="img/m5.jpg">
+<img _src="img/m6.jpg">
+<img _src="img/m7.jpg">
+<img _src="img/m8.jpg">
+<img _src="img/m9.jpg">
+<img _src="img/m10.jpg">
+
+</body>
+</html>
